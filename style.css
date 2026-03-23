@@ -1230,6 +1230,12 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
 }
 
 @media (max-width: 768px) {
+    .header-container { align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .logo { font-size: 1.05rem; }
+    .header .btn-sm { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+    
+    .hero { padding: 120px 0 60px; }
+    .hero-container { gap: 2rem; }
     .hero-buttons { flex-direction: column; }
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .hero-title { font-size: 2.2rem; }
@@ -1237,6 +1243,7 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
     .fb-1, .fb-2, .fb-3, .fb-4 { display: none; }
     .timeline::before { left: 24px; }
     .timeline-number { width: 50px; height: 50px; font-size: 1.2rem; }
+    .section-padding { padding: 50px 0; }
 }
 
 /* ===========================================
