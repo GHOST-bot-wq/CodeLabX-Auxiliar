@@ -28,6 +28,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -155,7 +156,7 @@ ul {
 }
 
 .glow-3 {
-    bottom: -100px;
+    bottom: 0px;
     left: 40%;
     width: 400px;
     height: 400px;
@@ -1728,6 +1729,11 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
 .btn-secondary-outline i { color: #25d366; }
 
 /* ===========================================
+   Sticky Mobile CTA & Utilities
+   =========================================== */
+.mobile-only { display: none !important; }
+
+/* ===========================================
    Responsive Design & Hierarchy Scaling
    =========================================== */
 @media (max-width: 900px) {
@@ -1778,15 +1784,51 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
 }
 
 @media (max-width: 600px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; }
+
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    body {
+        padding-bottom: 0;
+    }
+    
+    .container {
+        padding: 0 0.8rem;
+    }
+    footer {
+        padding-bottom: calc(3rem + 80px);
+    }
+
+    .mobile-sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.8rem 1.5rem 1rem 1.5rem;
+        background: rgba(5, 5, 8, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+    }
+
     .hero {
         padding: 90px 0 40px; /* Reduzido no topo e base para colar mais no header */
         min-height: auto;
     }
 
-    .badge { margin-bottom: 0.8rem; }
+    .badge { margin-bottom: 0.8rem; white-space: normal; text-align: center; }
     .hero-title { font-size: 2.2rem; line-height: 1.15; margin-bottom: 0.8rem; }
     .hero-subtitle { font-size: 1.05rem; margin-bottom: 1.5rem; }
-    .hero-proof { margin-bottom: 1.5rem; }
+    .hero-proof { margin-bottom: 1.5rem; flex-direction: column; text-align: center; gap: 0.8rem; }
     .hero-micro-value { display: none; } /* Remover isso no mobile limpa muito o topo */
     
     .hero-cta-wrapper { gap: 0.5rem; }
@@ -1802,33 +1844,38 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
     .section-padding { padding: 60px 0; }
     .section-title { font-size: 1.8rem; line-height: 1.2; margin-bottom: 1rem; }
     
-    .glass-card { padding: 1.5rem; }
+    .glass-card { padding: 1rem; }
     
     /* Wrap the pain cards on mobile so they don't get crushed */
     .premium-pain-card-hz {
         flex-direction: column;
         text-align: center;
-        gap: 1.5rem;
-        padding: 2rem 1.5rem;
+        gap: 1.2rem;
+        padding: 1.25rem 1rem;
     }
-    .pain-text-content h3 { font-size: 1.3rem; }
+    .pain-text-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
     
     .compact-offer-card { 
-        padding: 2.5rem 1.5rem; 
-        border-radius: 16px; 
+        padding: 1.5rem 1rem; 
+        border-radius: 12px; 
     }
     
-    .offer-machine-title { font-size: 1.8rem; }
-    .price-massive { font-size: 3.2rem; margin-bottom: 0.5rem; }
+    .offer-scarcity-badge { margin-bottom: 0.8rem; }
+    .offer-machine-title { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .offer-machine-subtitle { font-size: 0.95rem; margin-bottom: 1rem; }
+
+    .price-massive { font-size: 2.8rem; margin-bottom: 0.2rem; }
     
     .compact-price-block {
-        padding: 1rem;
-        border-radius: 12px;
-        margin-bottom: 1.5rem;
+        padding: 0.8rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
     }
 
+    .compact-benefits-list { margin-bottom: 1rem; }
     .compact-benefits-list li {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        gap: 0.5rem;
     }
     
     .btn-max {
@@ -1837,9 +1884,36 @@ footer p { color: var(--text-muted); font-size: 0.9rem; }
         border-radius: 12px;
     }
 
+    .hero-mockup-wrapper {
+        transform: none !important;
+        animation: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .mockup-img {
+        margin-bottom: 0.5rem;
+    }
     .floating-badge {
-        font-size: 0.75rem;
-        padding: 0.5rem 0.8rem;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        animation: none !important;
+        width: 100%;
+        justify-content: center;
+        font-size: 0.85rem;
+        padding: 0.8rem;
     }
     .check-list li { font-size: 0.95rem; }
+
+    .timeline::before { left: 20px; }
+    .timeline-item { gap: 1rem; }
+    .timeline-number { width: 40px; height: 40px; font-size: 1.2rem; }
+    
+    .saas-wpp-body { padding: 1rem; }
+    .msg-chat-bubble { padding: 0.8rem; gap: 0.6rem; }
 }
